@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Private Access</title>
+    <style>
+        /* Helvetica/Sans-Serif Stack */
+        body { 
+            font-family: "Helvetica Neue", Helvetica, Arial, sans-serif; 
+            display: flex; 
+            justify-content: center; 
+            align-items: center; 
+            height: 100vh; 
+            background: #000000; 
+            color: #ffffff; 
+            margin: 0; 
+            -webkit-font-smoothing: antialiased;
+        }
+
+        .box { 
+            text-align: center; 
+            width: 100%; 
+            max-width: 320px;
+            padding: 40px;
+        }
+
+        h2 { 
+            font-weight: 700; 
+            letter-spacing: -0.02em; 
+            margin-bottom: 24px;
+            font-size: 24px;
+        }
+
+        input { 
+            padding: 12px; 
+            border-radius: 0px; /* Sharp edges for that Helvetica/modern look */
+            border: 1px solid #333; 
+            background: #111;
+            color: white;
+            margin-bottom: 16px; 
+            width: 100%; 
+            box-sizing: border-box;
+            outline: none;
+            font-family: inherit;
+        }
+
+        input:focus {
+            border-color: #fff;
+        }
+
+        button { 
+            padding: 12px; 
+            width: 100%;
+            border-radius: 0px; 
+            border: none; 
+            background: #ffffff; 
+            color: #000; 
+            cursor: pointer; 
+            font-weight: 700; 
+            font-family: inherit;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            font-size: 12px;
+            transition: opacity 0.2s;
+        }
+
+        button:hover { 
+            opacity: 0.8; 
+        }
+
+        #error { 
+            color: #ff4d4d; 
+            font-size: 12px; 
+            margin-top: 16px; 
+            min-height: 1rem; 
+            font-weight: 400;
+        }
+    </style>
+</head>
+<body>
+    <div class="box">
+        <h2>the wrong name i used to call you</h2>
+        <input type="password" id="passInput" placeholder="dont use capslock btw">
+        <button onclick="checkPass()">unlock</button>
+        <div id="error"></div>
+    </div>
+
+    <script>
+        function checkPass() {
+            const pass = document.getElementById('passInput').value;
+            const error = document.getElementById('error');
+            
+            // EDIT THESE TWO LINES
+            const SECRET_PASS = "sofia"; 
+            const DESTINATION = "https://docs.google.com/document/d/1iVtXR1xDM_u72VkadEBBp8QBkb2ZwR_n0lSythN4dAw/edit?usp=sharing";
+
+            if (pass === SECRET_PASS) { 
+                window.location.href = DESTINATION;
+            } else {
+                error.innerText = "wrong name@!";
+            }
+        }
+
+        // Allow pressing "Enter" to submit
+        document.getElementById("passInput").addEventListener("keyup", function(event) {
+            if (event.key === "Enter") {
+                checkPass();
+            }
+        });
+    </script>
+</body>
+</html>     
